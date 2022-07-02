@@ -1,29 +1,35 @@
-import React from 'react';
-import "./Slider.css";
+import React from "react";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-
+import Slides from "./Slides";
+import "./Slider.css";
 
 const Slider = () => {
   return (
-    <div className='carousel-container'>
-        <div className='carousel-tittle'>
-            <h2>my proyects</h2>
-        </div>
+    <div className="carousel-container">
+      <div className="carousel-title">
+        <h2>My Projects</h2>
+      </div>
 
-        <Carousel
-            arrows
-            slider-PerPage={3}
-            infinite
-            abunatuibSpeed={200}
-            centered
-            offset={50}
-            itemWidth={400}
-        />
-            
-
+      <Carousel
+        arrows
+        slidesPerPage={3}
+        infinite
+        animationSpeed={200}
+        centered
+        offset={50}
+        itemWidth={400}
+        slides={Slides}
+        breakpoints={{
+          960: {
+            slidesPerPage: 1,
+            arrows: false,
+            itemWidth: 250,
+          },
+        }}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;
