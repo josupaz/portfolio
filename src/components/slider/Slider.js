@@ -3,7 +3,6 @@ import "./Slider.css";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
-import React from 'react'
 
 const Slider = () => {
   return (
