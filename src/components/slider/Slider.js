@@ -8,7 +8,7 @@ const Slider = () => {
   return (
     <div className="carousel-container">
       <div className="carousel-title">
-        <h2>My Projects</h2>
+        <h2>technologies we work with</h2>
       </div>
 
       <Carousel
@@ -18,7 +18,7 @@ const Slider = () => {
         animationSpeed={200}
         centered
         offset={50}
-        itemWidth={400}
+        itemWidth={340}
         slides={Slides}
         breakpoints={{
           960: {

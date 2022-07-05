@@ -15,13 +15,13 @@ const Footer = () => {
       <div className="footer-sns">
         <div className="design-by">Design By Andrelo</div>
         <div className="sns-links">
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/company/your-tech-hands/" target="_blank" rel="noreferrer">
             <i className="fab fa-linkedin linkedin"></i>
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <i className="fab fa-twitter twitter"></i>
+          <a href="https://www.instagram.com/yourtechhands/" target="_blank" rel="noreferrer">
+            <i className="fab fa-instagram instagram"></i>
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+          <a href="https://www.facebook.com/Your-Tech-Hands-113310278100420" target="_blank" rel="noreferrer">
             <i className="fab fa-facebook facebook"></i>
           </a>
         </div>
