@@ -5,7 +5,7 @@ import "./Slider.css";
 const slidesInfo = [
   {
     src:
-      "./cisco2.jpg",
+      "./cisco.jpg",
     alt: "Cisco",
     desc: "Cisco",
   },
@@ -17,7 +17,7 @@ const slidesInfo = [
   },
   {
     src:
-      "./dell2.jpg",
+      "./dell3.jpg",
     alt: "Dell",
     desc: "Dell",
   },
@@ -32,6 +32,12 @@ const slidesInfo = [
       "./forti2.jpg",
     alt: "Fortinet",
     desc: "Fortinet",
+  },
+  {
+    src:
+      "./juniper.jpg",
+    alt: "juniper",
+    desc: "Juniper",
   },
 ];
 

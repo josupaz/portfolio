@@ -5,17 +5,16 @@ const About = () => {
   return (
     <div className="about-container">
       <div className="about-desc">
-        <h3>Let me tell you something about me</h3>
+        <h3>We are a company based in Argentina that gives remote support to clients all over the world.</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis
-          provident inventore quod voluptates sequi. Quis, necessitatibus omnis
-          iusto perferendis dolores voluptate et dolorum inventore autem nemo,
-          quos eveniet magni nesciunt.
+        
+
+Our main area is networking, and we are specialized on tasks like Network design, Cisco devices configuration and troubleshooting, remote hands support, devices replacement, servers troubleshooting.
         </p>
       </div>
       <div className="about-img">
         <img
-          src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_960_720.jpg"
+          src="./about.jpg"
           alt="about"
         />
       </div>
