@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import "./Form.css";
 
-const Formulario = () => {
+const Form = () => {
 	const [inputNombre, cambiarInputNombre] = useState('');
 	const [inputCorreo, cambiarInputCorreo] = useState('');
+	const [inputTel, cambiarInputTel] = useState('');
 
 	// Funcion que se encargara de validar los datos y enviar el formulario
 	const handleSubmit = (e) => {
@@ -25,30 +26,48 @@ const Formulario = () => {
 		cambiarInputCorreo(e.target.value);
 	}
 
+		// Funcion que se encarga de cambiar el estado del inputCorreo
+		const handleInputTel = (e) => {
+			cambiarInputTel(e.target.value);
+		}
+
 	return (
-		<>
+		<div className='container-form'>
 			<form action="" onSubmit={handleSubmit} className="formulario">
 				<div>
 					<label htmlFor="nombre">Nombre</label>
 					<input
-                        autocomplete="off"
+						autocomplete="off"
 						type="text"
 						name="nombre"
 						id="nombre"
 						value={inputNombre}
 						onChange={handleInputNombre}
+						maxLength="30"
 					/>
 				</div>
 
                 <div>
 					<label htmlFor="correo">Correo</label>
 					<input
-                        autocomplete="off"
+						autocomplete="off"
 						type="text"
 						name="correo"
 						id="correo"
 						value={inputCorreo}
 						onChange={handleInputCorreo}
+					/>
+				</div>
+
+				<div>
+					<label htmlFor="telefono">Telefono</label>
+					<input
+						autocomplete="off"
+						type="number"
+						name="tel"
+						id="tel"
+						value={inputTel}
+						onChange={handleInputTel}
 					/>
 				</div>
 
@@ -58,12 +77,13 @@ const Formulario = () => {
                 <div>
 					<label htmlFor="mensaje">Mensaje</label>
 					<textarea
-                        autocomplete="off"
+						autocomplete="off"
 						type="text"
 						name="mensaje"
 						id="mensaje"
                         cols="40"
                         rows="5"
+						resize= "none"
 					/>
 				</div>
 
@@ -73,8 +93,8 @@ const Formulario = () => {
 
 				<button type="submit">Enviar</button>
 			</form>
-		</>
+		</div>
 	);
 }
  
-export default Formulario;
+export default Form;
