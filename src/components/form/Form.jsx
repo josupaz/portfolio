@@ -35,7 +35,7 @@ const Form = () => {
 		<div className='container-form'>
 			<form action="" onSubmit={handleSubmit} className="formulario">
 				<div>
-					<label htmlFor="nombre">Nombre</label>
+					<label htmlFor="nombre">Name</label>
 					<input
 						autocomplete="off"
 						type="text"
@@ -48,7 +48,7 @@ const Form = () => {
 				</div>
 
                 <div>
-					<label htmlFor="correo">Correo</label>
+					<label htmlFor="correo">Email</label>
 					<input
 						autocomplete="off"
 						type="text"
@@ -60,7 +60,7 @@ const Form = () => {
 				</div>
 
 				<div>
-					<label htmlFor="telefono">Telefono</label>
+					<label htmlFor="telefono">Phone</label>
 					<input
 						autocomplete="off"
 						type="number"
@@ -75,7 +75,7 @@ const Form = () => {
 
 
                 <div>
-					<label htmlFor="mensaje">Mensaje</label>
+					<label htmlFor="mensaje">Message</label>
 					<textarea
 						autocomplete="off"
 						type="text"
@@ -83,7 +83,6 @@ const Form = () => {
 						id="mensaje"
                         cols="40"
                         rows="5"
-						
 					/>
 				</div>
 
@@ -91,7 +90,7 @@ const Form = () => {
 
 				
 
-				<button type="submit">Enviar</button>
+				<button type="submit">Send</button>
 			</form>
 		</div>
 	);
