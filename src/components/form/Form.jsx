@@ -83,7 +83,7 @@ const Form = () => {
 						id="mensaje"
                         cols="40"
                         rows="5"
-						resize= "none"
+						
 					/>
 				</div>
 
