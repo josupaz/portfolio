@@ -1,99 +1,103 @@
 import React, {useState} from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import "./Form.css";
 
-const Form = () => {
-	const [inputNombre, cambiarInputNombre] = useState('');
-	const [inputCorreo, cambiarInputCorreo] = useState('');
-	const [inputTel, cambiarInputTel] = useState('');
-
-	// Funcion que se encargara de validar los datos y enviar el formulario
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		// Comprobamos validacion del formulario ...
-		// Si todo es correcto enviamos el formulario
-
-		console.log('Formulario Enviado!');
-	}
-
-	// Funcion que se encarga de cambiar el estado del inputNombre
-	const handleInputNombre = (e) => {
-		cambiarInputNombre(e.target.value);
-	}
-	
-	// Funcion que se encarga de cambiar el estado del inputCorreo
-	const handleInputCorreo = (e) => {
-		cambiarInputCorreo(e.target.value);
-	}
-
-		// Funcion que se encarga de cambiar el estado del inputCorreo
-		const handleInputTel = (e) => {
-			cambiarInputTel(e.target.value);
-		}
-
+const Formulario = () => {
+	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 	return (
-		<div className='container-form'>
-			<form action="" onSubmit={handleSubmit} className="formulario">
-				<div>
-					<label htmlFor="nombre">Name</label>
-					<input
-						autocomplete="off"
-						type="text"
-						name="nombre"
-						id="nombre"
-						value={inputNombre}
-						onChange={handleInputNombre}
-						maxLength="30"
-					/>
-				</div>
+		<>
+			<Formik
+				initialValues={{
+					nombre: '',
+					correo: '',
+					phone: '',
+					mensaje: ''
+				}}
+				validate={(valores) => {
+					let errores = {};
 
-                <div>
-					<label htmlFor="correo">Email</label>
-					<input
-						autocomplete="off"
-						type="text"
-						name="correo"
-						id="correo"
-						value={inputCorreo}
-						onChange={handleInputCorreo}
-					/>
-				</div>
+					// Validacion nombre
+					if(!valores.nombre){
+						errores.nombre = 'Please enter your name'
+					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)){
+						errores.nombre = 'The name field can only contain letters'
+					}
 
-				<div>
-					<label htmlFor="telefono">Phone</label>
-					<input
-						autocomplete="off"
-						type="number"
-						name="tel"
-						id="tel"
-						value={inputTel}
-						onChange={handleInputTel}
-					/>
-				</div>
+					// Validacion correo
+					if(!valores.correo){
+						errores.correo = 'Please enter an email'
+					} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo)){
+						errores.correo = 'Enter a valid email'
+					}
+
+					// Validacion Telefono
+					if(!valores.phone){
+						errores.phone = 'Please enter a phone'
+					} else if(!/^[0-9]+$/.test(valores.phone)){
+						errores.phone = 'Enter a valid phone'
+					}
+
+					return errores;
+				}}
+				onSubmit={(valores, {resetForm}) => {
+					resetForm();
+					console.log('Form Send');
+					cambiarFormularioEnviado(true);
+					setTimeout(() => cambiarFormularioEnviado(false), 5000);
+				}}
+			>
+				{( {errors} ) => (
+					<div  className='container-form'>
+					<Form className='formulario'>
+						<div>
+							<label htmlFor="nombre">Name</label>
+							<Field
+								autoComplete="off"
+								type="text" 
+								id="nombre" 
+								name="nombre" 
+								placeholder=""
+							/>
+							<ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
+						</div>
+						<div>
+							<label htmlFor="correo">Email</label>
+							<Field
+								autoComplete="off"
+								type="text" 
+								id="correo" 
+								name="correo" 
+								placeholder="" 
+							/>
+							<ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />
+						</div>
+
+						<div>
+							<label htmlFor="correo">Phone</label>
+							<Field
+								autoComplete="off"
+								type="number" 
+								id="phone" 
+								name="phone" 
+								placeholder="" 
+							/>
+							<ErrorMessage name="phone" component={() => (<div className="error">{errors.phone}</div>)} />
+						</div>
 
 
 
+						<div>
+							<Field className="textarea" name="mensaje" as="textarea" placeholder="Mensaje" />
+						</div>
 
-                <div>
-					<label htmlFor="mensaje">Message</label>
-					<textarea
-						autocomplete="off"
-						type="text"
-						name="mensaje"
-						id="mensaje"
-                        cols="40"
-                        rows="5"
-					/>
-				</div>
-
-
-
-				
-
-				<button type="submit">Send</button>
-			</form>
-		</div>
+						<button type="submit">Enviar</button>
+						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+					</Form>
+					</div>
+				)}
+			</Formik>
+		</>
 	);
 }
  
-export default Form;
+export default Formulario;
