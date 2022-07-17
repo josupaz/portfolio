@@ -102,7 +102,7 @@ const Formulario = () => {
       >
         {({ errors }) => (
           <div className="container-form">
-            <Form method="POST" className="formulario">
+            <Form className="formulario" action="javascript:alert(grecaptcha.getResponse(widgetId1));">
               <div>
                 <label htmlFor="nombre">Name</label>
                 <Field
@@ -168,9 +168,6 @@ const Formulario = () => {
                 <p className="exito">Formulario enviado con exito!</p>
               )}
             </Form>
-			<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
           </div>
         )}
       </Formik>
