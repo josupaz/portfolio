@@ -102,7 +102,7 @@ const Formulario = () => {
       >
         {({ errors }) => (
           <div className="container-form">
-            <Form method="post" className="formulario">
+            <Form method="POST" className="formulario">
               <div>
                 <label htmlFor="nombre">Name</label>
                 <Field
@@ -161,13 +161,16 @@ const Formulario = () => {
                   component={() => <div className="error">{errors.message}</div>}
                 />
               </div>
-			  <div className="g-recaptcha" data-sitekey="6LcA3PcgAAAAANKJ3HEleQPauiEKIpGcdlg8x83c"></div>
+			  <div className="g-recaptcha" g-recaptcha-response='' data-sitekey="6LcA3PcgAAAAANKJ3HEleQPauiEKIpGcdlg8x83c"></div>
 			  <br/>
               <button type="submit">Send</button>
               {formularioEnviado && (
                 <p className="exito">Formulario enviado con exito!</p>
               )}
             </Form>
+			<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
           </div>
         )}
       </Formik>
