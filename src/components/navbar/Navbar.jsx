@@ -7,8 +7,8 @@ const Navbar = ({ isScrolling }) => {
   };
 
   return (
-    <nav className={`navbar ${isScrolling > 20 ? "scrolling" : null}`}>
-      <div className="navbar-logo" onClick={toTheTop}>
+    <nav className={`navbar ${isScrolling > 450 ? "scrolling" : null}`}>
+      <div className={`navbar-logo ${isScrolling > 450 ? "visibility" : null}`} onClick={toTheTop}>
         <img className="logo"
           src="./2.png"
           alt="logo"

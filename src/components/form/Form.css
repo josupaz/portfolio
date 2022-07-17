@@ -8,7 +8,7 @@ textarea
 }
 
 .formulario {
-	min-width: 600px;
+	width: 600px;
 	background: #fff;
 	border-radius: 5px;
 	padding: 20px;
@@ -85,4 +85,18 @@ textarea
 
 .formulario input[type="radio"] {
 	width: auto;
+}
+
+
+@media only screen and (max-width: 1500px) {
+	.container-form {
+	  margin-right: 0%;
+	  justify-content: center;
+	  align-items: center;
+	  display: flex;
+	}
+	.formulario{
+		width: 600px;
+		align-items: center;
+	}
 }

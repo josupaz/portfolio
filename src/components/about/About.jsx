@@ -5,7 +5,8 @@ const About = () => {
   return (
     <div className="about-container">
       <div className="about-desc">
-        <h3>We are a company based in Argentina that gives remote support to clients all over the world.</h3>
+      <h3>About us</h3>
+        <p>We are a company based in Argentina that gives remote support to clients all over the world.</p>
         <p>
         
 

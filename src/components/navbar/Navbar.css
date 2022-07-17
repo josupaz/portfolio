@@ -14,11 +14,16 @@
   transition: all 0.5s ease;
 }
 
+.visibility{
+  visibility: visible!important;
+}
+
 .navbar-logo {
   height: 80px;
   line-height: 80px;
   color: white;
   cursor: pointer;
+  visibility: hidden;
 }
 
 .logo {

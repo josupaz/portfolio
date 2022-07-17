@@ -3,20 +3,20 @@
   background-color: white;
   color: black;
   height: 70vh;
-  padding: 100px 0 100px 0;
 }
 
 .about-desc {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 55%;
-  padding: 0 100px 0 100px;
+  width: 50%;
+  padding: 0px 20px 0px 20px;
+  text-align: center;
 }
 
 .about-desc > h3 {
   margin-bottom: 30px;
-  font-size: 28px;
+  font-size: 45px;
 }
 
 .about-desc > p {
@@ -24,7 +24,6 @@
 }
 
 .about-img {
-  width: 45%;
   display: flex;
   overflow: hidden;
 }

@@ -28,6 +28,11 @@
   font-size: 32px;
 }
 
+.logo2 {
+  height: 400px;
+}
+
+
 @media screen and (max-width: 960px) {
   .cover-container > h1 {
     font-size: 70px;
