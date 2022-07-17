@@ -102,7 +102,7 @@ const Formulario = () => {
       >
         {({ errors }) => (
           <div className="container-form">
-            <Form className="formulario">
+            <Form method="post" className="formulario">
               <div>
                 <label htmlFor="nombre">Name</label>
                 <Field
