@@ -87,10 +87,11 @@ const Formulario = () => {
 
 
 						<div>
-							<Field className="textarea" name="mensaje" as="textarea" placeholder="Mensaje" />
+							<label htmlFor="message">Message</label>
+							<Field className="textarea" name="mensaje" as="textarea" placeholder="" />
 						</div>
 
-						<button type="submit">Enviar</button>
+						<button type="submit">Send</button>
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
 					</Form>
 					</div>
