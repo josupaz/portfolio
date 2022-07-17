@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./Form.css";
 import initEmailJs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Formulario = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-  const [nombre, setNombre] = useState('');
-  const [correo, setCorreo] = useState('');
-  const [telefono, setTelefono] = useState('');
-  const [mensaje, setMensaje] = useState('');
+  const [nombre, setNombre] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [message, setMessage] = useState("");
+  const [resp, setResp] = useState(null);
 
-  const PUBLIC_KEY = 'YDFnYTL-fQoHfb-Xi';
-  const SERVICE_ID = 'service_vysp1vs';
-  const TEMPLATE_ID = 'template_odselwq';
+  const captcha = useRef(null);
+
+  const PUBLIC_KEY = "YDFnYTL-fQoHfb-Xi";
+  const SERVICE_ID = "service_vysp1vs";
+  const TEMPLATE_ID = "template_odselwq";
+  const SITE_KEY = "6LcA3PcgAAAAANKJ3HEleQPauiEKIpGcdlg8x83c";
+
+  var verifyCallback =  () => {
+    setResp(captcha.current.getValue());
+  };
 
   return (
     <>
@@ -21,7 +30,7 @@ const Formulario = () => {
           nombre: "",
           correo: "",
           phone: "",
-          mensaje: "",
+          message: "",
         }}
         validate={(valores) => {
           let errores = {};
@@ -31,9 +40,9 @@ const Formulario = () => {
             errores.nombre = "Please enter your name";
           } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)) {
             errores.nombre = "The name field can only contain letters";
-          }else{
-			setNombre(valores.nombre);
-		  }
+          } else {
+            setNombre(valores.nombre);
+          }
 
           // Validacion correo
           if (!valores.correo) {
@@ -44,46 +53,53 @@ const Formulario = () => {
             )
           ) {
             errores.correo = "Enter a valid email";
-          }else{
-			setCorreo(valores.correo);
-		  }
+          } else {
+            setCorreo(valores.correo);
+          }
 
           // Validacion Telefono
           if (!valores.phone) {
             errores.phone = "Please enter a phone";
           } else if (!/^[0-9]+$/.test(valores.phone)) {
             errores.phone = "Enter a valid phone";
-          }else{
-			setTelefono(valores.phone);
-		  }
+          } else {
+            setTelefono(valores.phone);
+          }
 
-		  
           // Validacion Mensaje
           if (!valores.message) {
             errores.message = "Please enter a message";
-          } else  {
-			setMensaje(valores.message);
-		  }
-  
+          } else {
+            setMessage(valores.message);
+          }
 
           return errores;
         }}
-
         onSubmit={(valores, { resetForm }) => {
-		  var today = new Date(),
-            date = today.getDate() + '-' +(today.getMonth() + 1) + '-' + today.getFullYear();
+          var today = new Date(),
+            date =
+              today.getDate() +
+              "-" +
+              (today.getMonth() + 1) +
+              "-" +
+              today.getFullYear();
+
+          console.log("resp", resp);
 
           const templateParams = {
             name: nombre,
-			email: correo,
-			phone: telefono,
-			message: mensaje,
-			date: date
+            email: correo,
+            phone: telefono,
+            message: message,
+            date: date,
+            "g-recaptcha-response": resp,
           };
 
-          initEmailJs.init(PUBLIC_KEY);
-          initEmailJs
-            .send( SERVICE_ID, TEMPLATE_ID, templateParams)
+		  //Valida si acepto Recaptcha
+          if(resp != null){
+
+			initEmailJs
+            .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
             .then(
               function (response) {
                 console.log("SUCCESS!", response.status, response.text);
@@ -92,12 +108,16 @@ const Formulario = () => {
                 console.log("FAILED...", error);
               }
             );
-          console.log("Form Send");
-          cambiarFormularioEnviado(true);
-          setTimeout(() => cambiarFormularioEnviado(false), 5000);
-		  const msgField = document.getElementById('message');
-			  msgField.append('');
-          resetForm();
+
+			cambiarFormularioEnviado(true);
+			setTimeout(() => cambiarFormularioEnviado(false), 10000);
+			setResp(null);
+			captcha.current.reset();
+			resetForm();
+		  }else{
+			alert("Please acept reCaptcha!");
+		  }
+          
         }}
       >
         {({ errors }) => (
@@ -152,23 +172,24 @@ const Formulario = () => {
                 <Field
                   className="textarea"
                   name="message"
-				  id="message"
+                  id="message"
                   as="textarea"
                   placeholder=""
                 />
-				<ErrorMessage
+                <ErrorMessage
                   name="message"
-                  component={() => <div className="error">{errors.message}</div>}
+                  component={() => (
+                    <div className="error">{errors.message}</div>
+                  )}
                 />
               </div>
-			  <div className="g-recaptcha" g-recaptcha-response='' data-sitekey="6LcA3PcgAAAAANKJ3HEleQPauiEKIpGcdlg8x83c"></div>
-			  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
-			  <br/>
+              <div className="recaptcha">
+                <ReCAPTCHA ref={captcha} sitekey={SITE_KEY} onChange={verifyCallback} />
+              </div>
+              <br />
               <button type="submit">Send</button>
               {formularioEnviado && (
-                <p className="exito">Formulario enviado con exito!</p>
+                <p className="exito">Form sent successfully!</p>
               )}
             </Form>
           </div>
