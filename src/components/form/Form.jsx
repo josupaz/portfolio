@@ -102,7 +102,7 @@ const Formulario = () => {
       >
         {({ errors }) => (
           <div className="container-form">
-            <Form className="formulario" action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+            <Form className="formulario" method="POST">
               <div>
                 <label htmlFor="nombre">Name</label>
                 <Field
@@ -162,6 +162,9 @@ const Formulario = () => {
                 />
               </div>
 			  <div className="g-recaptcha" g-recaptcha-response='' data-sitekey="6LcA3PcgAAAAANKJ3HEleQPauiEKIpGcdlg8x83c"></div>
+			  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
 			  <br/>
               <button type="submit">Send</button>
               {formularioEnviado && (
