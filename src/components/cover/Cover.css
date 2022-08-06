@@ -26,11 +26,13 @@
   margin-top: 8px;
   color: white;
   font-size: 32px;
+  cursor: default! important;
 }
 
 .logo2 {
   height: 400px;
 }
+
 
 
 @media screen and (max-width: 960px) {

@@ -184,7 +184,7 @@ const Formulario = () => {
                 />
               </div>
               <div className="recaptcha">
-                <ReCAPTCHA ref={captcha} sitekey={SITE_KEY} hl='en' onChange={verifyCallback} />
+                <ReCAPTCHA ref={captcha} sitekey={SITE_KEY} theme='dark' hl='en' onChange={verifyCallback} />
               </div>
               <br />
               <button type="submit">Send</button>

@@ -9,7 +9,7 @@ textarea
 
 .formulario {
 	width: 600px;
-	background: #fff;
+	background: rgb(65, 65, 65);
 	border-radius: 5px;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -44,6 +44,7 @@ textarea
 	padding: 10px;
 	margin-bottom: 5px;
 	color: #1f1f1f;
+	background-color: rgb(202, 202, 202);
 }
 
 .formulario input:focus {
@@ -52,14 +53,14 @@ textarea
 }
 
 .formulario .error {
-	color: #e92b2d;
+	background-color: rgba(68, 115, 196);
 	font-weight: 600;
 	font-size: 12px;
 }
 
 .formulario button[type="submit"] {
 	display: block;
-	background: #0085FF;
+	background-color: rgba(68, 115, 196);
 	font-weight: 600;
 	font-family: 'Open Sans', sans-serif;
 	border: none;
@@ -73,7 +74,7 @@ textarea
 }
 
 .formulario button[type="submit"]:hover {
-	background: #0051ff;
+	background-color: rgb(187, 40, 40);
 }
 
 .formulario .exito {

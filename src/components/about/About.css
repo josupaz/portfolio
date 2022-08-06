@@ -1,7 +1,7 @@
 .about-container {
   display: flex;
-  background-color: white;
-  color: black;
+  background-color: rgb(65, 65, 65);
+  color: rgb(202, 202, 202);
   height: 70vh;
 }
 
@@ -11,7 +11,9 @@
   justify-content: center;
   width: 50%;
   padding: 0px 20px 0px 20px;
-  text-align: center;
+  text-align: justify;
+  transform: scale(1);
+  transition: all 4s ease;
 }
 
 .about-desc > h3 {
@@ -26,6 +28,7 @@
 .about-img {
   display: flex;
   overflow: hidden;
+  border-radius: 47% 53% 0% 100% / 100% 0% 100% 0%;
 }
 
 
@@ -51,7 +54,6 @@
 
   .about-img {
     width: 100%;
-    margin-bottom: 50px;
   }
 
   .about-img > img {

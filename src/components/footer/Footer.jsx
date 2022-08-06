@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-sns">
-        <div className="design-by">Developed by Andrelo & Josuelo</div>
         <div className="sns-links">
           <a href="https://www.linkedin.com/company/your-tech-hands/" target="_blank" rel="noreferrer">
             <i className="fab fa-linkedin linkedin"></i>
@@ -17,6 +16,7 @@ const Footer = () => {
             <i className="fab fa-facebook facebook"></i>
           </a>
         </div>
+        <div className="design-by">Developed by Andrelo & Josuelo</div>
       </div>
     </footer>
   );
